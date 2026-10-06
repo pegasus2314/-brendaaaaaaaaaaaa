@@ -205,7 +205,7 @@ button{color:inherit}
 .editing .tm figure:hover::before{content:"✎ Foto";position:absolute;top:10px;right:10px;background:#fff;border:1px solid var(--ink);border-radius:99px;padding:4px 10px;font-size:11px;z-index:3}
 .editing .qr{position:relative}.editing .qr::after{content:"Usa «Imagen QR» en la barra para reemplazar";position:absolute;bottom:-26px;left:0;right:0;text-align:center;font-size:11px;color:var(--warm)}
 input[type=file]{padding:10px}
-.thumbs{display:flex;gap:8px;flex-wrap:wrap;grid-column:1/-1}.thumbs img{width:76px;height:76px;object-fit:cover;border-radius:12px;display:block}.thumbs button{padding:0;border:2px solid transparent;border-radius:14px;background:none;cursor:pointer}.thumbs button:hover{border-color:#c00}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;grid-column:1/-1}.thumbs img{width:76px;height:76px;object-fit:cover;border-radius:12px;display:block}.thumbs button{padding:0;border:2px solid transparent;border-radius:14px;background:none;cursor:pointer}.thumbs button:hover{border-color:#c00}.demo-badge{position:absolute;z-index:4;top:14px;left:14px;background:#fff;color:#0a0a0a;border:1px solid #0a0a0a;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 8px 20px -12px #000}.portrait.demo::after{content:"Foto demo · reemplazar";position:absolute;z-index:4;top:14px;left:14px;background:#fff;color:#0a0a0a;border:1px solid #0a0a0a;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 8px 20px -12px #000}
 </style>
 </head>
 <body>
@@ -248,9 +248,9 @@ input[type=file]{padding:10px}
 
 <section id="sobre-mi" aria-labelledby="h-ab">
   <div class="about">
-    <div class="portrait r l">
-      <!-- REEMPLAZAR: quitar el span y poner <img src="foto-brenda.jpg" alt="Retrato de Brenda Iveth"> -->
-      <span>[Fotografía de Brenda]</span>
+    <div class="portrait r l demo">
+      <img src="https://images.unsplash.com/photo-1550422086-b9589ec2d371?auto=format&fit=crop&w=1200&q=85" alt="Fotografía de demostración para Brenda Iveth">
+      <!-- Foto temporal: Brenda la reemplazará desde el panel de administración. -->
     </div>
     <div class="r rt">
       <span class="eyebrow">Sobre Brenda</span>
@@ -387,12 +387,12 @@ function art(t,p,s=0){
 const DATA=JSON.parse(document.querySelector("#site-data").textContent||"{}");
 Object.assign(CONFIG.contact,DATA.contact||{});if(DATA.qr)CONFIG.qrImage=DATA.qr;
 let projects=DATA.projects||[
- {title:"[Proyecto 1]",category:"Branding",year:"2026",type:0,image:"",gallery:[],description:"[Descripción del proyecto]",process:"[Proceso creativo: investigación, bocetos, concepto]",result:"[Resultado: impacto, entregables]"},
- {title:"[Proyecto 2]",category:"Identidad visual",year:"2026",type:1,image:"",gallery:[],description:"[Descripción del proyecto]",process:"[Proceso creativo]",result:"[Resultado]"},
- {title:"[Proyecto 3]",category:"Social Media",year:"2025",type:2,image:"",gallery:[],description:"[Descripción del proyecto]",process:"[Proceso creativo]",result:"[Resultado]"},
- {title:"[Proyecto 4]",category:"Editorial",year:"2025",type:3,image:"",gallery:[],description:"[Descripción del proyecto]",process:"[Proceso creativo]",result:"[Resultado]"},
- {title:"[Proyecto 5]",category:"Campañas",year:"2025",type:4,image:"",gallery:[],description:"[Descripción del proyecto]",process:"[Proceso creativo]",result:"[Resultado]"},
- {title:"[Proyecto 6]",category:"Ilustración",year:"2024",type:5,image:"",gallery:[],description:"[Descripción del proyecto]",process:"[Proceso creativo]",result:"[Resultado]"}
+ {title:"Identidad de marca",category:"Branding",year:"2026",type:0,image:"https://images.unsplash.com/photo-1548094990-c16ca90f1f0d?auto=format&fit=crop&w=1200&q=85",gallery:["https://images.unsplash.com/photo-1758876017768-458c975e92ed?auto=format&fit=crop&w=1200&q=85","https://images.unsplash.com/photo-1575318634028-6a0cfcb60c59?auto=format&fit=crop&w=1200&q=85"],description:"Proyecto demostrativo de identidad visual para una marca contemporánea.",process:"Investigación, concepto visual, tipografía y sistema de identidad.",result:"Sistema visual preparado para web, redes y piezas impresas."},
+ {title:"Estudio creativo",category:"Identidad visual",year:"2026",type:1,image:"https://images.unsplash.com/photo-1758876017768-458c975e92ed?auto=format&fit=crop&w=1200&q=85",gallery:["https://images.unsplash.com/photo-1575318634028-6a0cfcb60c59?auto=format&fit=crop&w=1200&q=85","https://images.unsplash.com/photo-1758876201985-66c20343e681?auto=format&fit=crop&w=1200&q=85"],description:"Dirección visual de demostración para un estudio creativo.",process:"Moodboard, exploración gráfica y construcción de lenguaje visual.",result:"Una identidad coherente y adaptable a distintos formatos."},
+ {title:"Contenido digital",category:"Social Media",year:"2025",type:2,image:"https://images.unsplash.com/photo-1575318634028-6a0cfcb60c59?auto=format&fit=crop&w=1200&q=85",gallery:["https://images.unsplash.com/photo-1758876201985-66c20343e681?auto=format&fit=crop&w=1200&q=85","https://images.unsplash.com/photo-1550422086-b9589ec2d371?auto=format&fit=crop&w=1200&q=85"],description:"Ejemplo de dirección visual para contenido de redes sociales.",process:"Definición de estilo, composición y sistema de piezas.",result:"Plantillas visuales listas para mantener consistencia de marca."},
+ {title:"Editorial contemporáneo",category:"Editorial",year:"2025",type:3,image:"https://images.unsplash.com/photo-1758876201985-66c20343e681?auto=format&fit=crop&w=1200&q=85",gallery:["https://images.unsplash.com/photo-1550422086-b9589ec2d371?auto=format&fit=crop&w=1200&q=85","https://images.unsplash.com/photo-1548094990-c16ca90f1f0d?auto=format&fit=crop&w=1200&q=85"],description:"Propuesta demostrativa de diseño editorial y composición.",process:"Jerarquía tipográfica, retícula y selección de imágenes.",result:"Una pieza editorial limpia, legible y visualmente consistente."},
+ {title:"Campaña visual",category:"Campañas",year:"2025",type:4,image:"https://images.unsplash.com/photo-1550422086-b9589ec2d371?auto=format&fit=crop&w=1200&q=85",gallery:["https://images.unsplash.com/photo-1548094990-c16ca90f1f0d?auto=format&fit=crop&w=1200&q=85","https://images.unsplash.com/photo-1758876017768-458c975e92ed?auto=format&fit=crop&w=1200&q=85"],description:"Concepto visual de demostración para una campaña publicitaria.",process:"Concepto, dirección de arte y adaptación a formatos digitales.",result:"Una campaña con lenguaje visual reconocible y flexible."},
+ {title:"Dirección creativa",category:"Dirección de arte",year:"2024",type:5,image:"https://images.unsplash.com/photo-1548094990-c16ca90f1f0d?auto=format&fit=crop&w=1200&q=85",gallery:["https://images.unsplash.com/photo-1575318634028-6a0cfcb60c59?auto=format&fit=crop&w=1200&q=85","https://images.unsplash.com/photo-1550422086-b9589ec2d371?auto=format&fit=crop&w=1200&q=85"],description:"Ejemplo de dirección de arte para presentar una propuesta creativa.",process:"Conceptualización, referencias visuales y composición.",result:"Una narrativa visual pensada para destacar el concepto."}
 ];
 const services=[["Identidad visual","Logotipos, sistemas de marca y guías de uso."],["Contenido para redes","Piezas, plantillas y líneas gráficas para social media."],["Diseño editorial","Revistas, catálogos, libros y presentaciones."],["Dirección creativa","Concepto y coherencia visual de principio a fin."],["Diseño publicitario","Campañas, afiches y piezas gráficas con impacto."],["Ilustración","Imágenes originales que dan voz a tu marca."]];
 const steps=[["Descubrimiento","Escucho, investigo y entiendo el objetivo."],["Concepto","Bocetos y dirección creativa."],["Diseño","Desarrollo visual de las propuestas."],["Refinamiento","Ajustes hasta que todo encaje."],["Entrega","Archivos finales listos para usar."]];
@@ -407,7 +407,7 @@ $("#mq").innerHTML=esc("").concat([...words,...words].map(w=>`<span>${w}</span>`
 
 /* Portafolio */
 const grid=$("#grid"),fl=$("#filters");
-grid.innerHTML=projects.map((p,i)=>`<button class="card r" data-i="${i}" data-cat="${esc(p.category)}" aria-label="Ver proyecto ${esc(p.title)}"><div class="ph"><img src="${src(p)}" alt="Imagen de ejemplo del proyecto ${esc(p.title)}" width="800" height="800" ${i>1?'loading="lazy"':''}></div><div class="meta"><h3>${esc(p.title)}</h3><small>${esc(p.category)} · ${esc(p.year)}</small></div><p>${esc(p.description)}</p><span class="go">Ver proyecto ↗</span></button>`).join("");
+grid.innerHTML=projects.map((p,i)=>`<button class="card r" data-i="${i}" data-cat="${esc(p.category)}" aria-label="Ver proyecto ${esc(p.title)}"><div class="ph"><img src="${src(p)}" alt="Imagen de demostración del proyecto ${esc(p.title)}" width="800" height="800" ${i>1?'loading="lazy"':''}>${p.image?'':'<span class="demo-badge">Foto demo</span>'}></div><div class="meta"><h3>${esc(p.title)}</h3><small>${esc(p.category)} · ${esc(p.year)}</small></div><p>${esc(p.description)}</p><span class="go">Ver proyecto ↗</span></button>`).join("");
 const cats=["Todos",...new Set(projects.map(p=>p.category))];
 fl.innerHTML=cats.map((c,i)=>`<button type="button" aria-pressed="${i==0}">${c}</button>`).join("");
 fl.onclick=e=>{const b=e.target.closest("button");if(!b)return;[...fl.children].forEach(x=>x.setAttribute("aria-pressed",x==b));
